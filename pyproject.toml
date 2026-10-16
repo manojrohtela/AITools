@@ -1,0 +1,31 @@
+[project]
+name = "devpilot"
+version = "0.1.0"
+description = "AI developer assistant demonstrating direct Groq tool calling over a local codebase"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "groq>=1.7,<2",
+    "pydantic>=2.10,<3",
+    "python-dotenv>=1.0,<2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3", "ruff>=0.15"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-p no:cacheprovider"
+markers = ["integration: calls the real Groq API (needs GROQ_API_KEY and DEVPILOT_RUN_INTEGRATION=1)"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+extend-exclude = ["examples"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "S", "BLE", "SIM"]
+ignore = ["S101", "S603", "S607"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S", "B"]

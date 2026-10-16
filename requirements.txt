@@ -1,0 +1,5 @@
+groq>=1.7,<2
+pydantic>=2.10,<3
+python-dotenv>=1.0,<2
+pytest>=8.3
+ruff>=0.15
